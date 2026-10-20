@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EventHub - Platform Event Terbaik</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+</head>
+<body class="bg-gray-50">
+
+     <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center space-x-3">
+                        <img src="https://image.web.id/images/Screenshot_2025-12-01_at_16.39.15-removebg-preview.png" alt="EventHub logo" class="h-10 w-auto" loading="lazy">
+                    </a>
+                </div>
+                
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="/" class="text-gray-700 hover:text-indigo-600">Home</a>
+                    <a href="/events" class="text-gray-700 hover:text-indigo-600">Events</a>
+                    
+                    <div class="relative group">
+                        <button class="flex items-center text-gray-700 hover:text-indigo-600 space-x-2">
+                            <img 
+                                src="https://ui-avatars.com/api/?name=User&background=4f46e5&color=ffffff&rounded=true&size=32&bold=true" 
+                                alt="User" 
+                                class="w-8 h-8 rounded-full border-2 border-indigo-100 shadow-sm"
+                            >
+                            <span>User Name</span>
+                            <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                            </svg>
+                        </button>
+                        <div class="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 hidden group-hover:block z-50 border border-gray-100">
+                            <div class="px-4 py-2 flex items-center space-x-2 border-b border-gray-100">
+                                <img 
+                                    src="https://ui-avatars.com/api/?name=User&background=4f46e5&color=ffffff&rounded=true&size=32&bold=true" 
+                                    alt="User" 
+                                    class="w-8 h-8 rounded-full"
+                                >
+                                <div class="text-sm font-medium text-gray-700 truncate">
+                                    User Name
+                                </div>
+                            </div>
+                            <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors duration-150">
+                                <i class="fas fa-user mr-2 text-indigo-500"></i>Profile
+                            </a>
+                            <a href="/my-orders" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors duration-150">
+                                <i class="fas fa-ticket-alt mr-2 text-indigo-500"></i>Pesanan Saya
+                            </a>
+                            <a href="/my-events" class="block px-4 py-2 text-sm text-gray-700 hover:bg-indigo-50 hover:text-indigo-700 transition-colors duration-150">
+                                <i class="fas fa-calendar-alt mr-2 text-indigo-500"></i>Event Saya
+                            </a>
+                            <div class="border-t border-gray-100 mt-1 pt-1">
+                                <form method="POST" action="/logout" class="w-full">
+                                    <button type="submit" class="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-red-50 hover:text-red-700 transition-colors duration-150">
+                                        <i class="fas fa-sign-out-alt mr-2 text-red-500"></i>Logout
+                                    </button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<div class="max-w-4xl mx-auto px-4 py-8">
+    <div class="mb-8">
+        <h1 class="text-3xl font-bold text-gray-900">Buat Event Baru</h1>
+        <p class="text-gray-600 mt-2">Bagikan event menarik Anda dengan komunitas</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-md p-6">
+        <form method="POST" enctype="multipart/form-data" class="space-y-6">
+            <!-- Basic Information -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Informasi Dasar</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="title" class="block text-sm font-medium text-gray-700 mb-2">
+                            Judul Event *
+                        </label>
+                        <input type="text" id="title" name="title" required
+                               value=""
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                               placeholder="Contoh: Konser Jazz Malam">
+                    </div>
+
+                    <div>
+                        <label for="category_id" class="block text-sm font-medium text-gray-700 mb-2">
+                            Kategori *
+                        </label>
+                        <select id="category_id" name="category_id" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="">Pilih Kategori</option>
+                            <option value="1">Musik</option>
+                            <option value="2">Olahraga</option>
+                            <option value="3">Seni</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label for="description" class="block text-sm font-medium text-gray-700 mb-2">
+                    Deskripsi Event *
+                </label>
+                <textarea id="description" name="description" rows="4" required
+                          class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                          placeholder="Jelaskan detail event Anda..."></textarea>
+            </div>
+
+            <!-- Date & Time -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Tanggal & Waktu</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="event_date" class="block text-sm font-medium text-gray-700 mb-2">
+                            Tanggal & Waktu Mulai *
+                        </label>
+                        <input type="datetime-local" id="event_date" name="event_date" required
+                               value=""
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+
+                    <div>
+                        <label for="event_end_date" class="block text-sm font-medium text-gray-700 mb-2">
+                            Tanggal & Waktu Selesai
+                        </label>
+                        <input type="datetime-local" id="event_end_date" name="event_end_date"
+                               value=""
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Location -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Lokasi</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label for="venue" class="block text-sm font-medium text-gray-700 mb-2">
+                            Tempat Event *
+                        </label>
+                        <input type="text" id="venue" name="venue" required
+                            value=""
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                            placeholder="Contoh: Gedung Serba Guna">
+                    </div>
+                    <div>
+                        <label for="city" class="block text-sm font-medium text-gray-700 mb-2">
+                            Kota *
+                        </label>
+                        <select id="city" name="city" required
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                            <option value="">Pilih Kota</option>
+                            <option value="Jakarta">Jakarta</option>
+                            <option value="Bandung">Bandung</option>
+                            <option value="Surabaya">Surabaya</option>
+                            <option value="Yogyakarta">Yogyakarta</option>
+                            <option value="Bali">Bali</option>
+                            <option value="Medan">Medan</option>
+                            <option value="Semarang">Semarang</option>
+                            <option value="Malang">Malang</option>
+                            <option value="Bogor">Bogor</option>
+                            <option value="Makassar">Makassar</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ticket Information -->
+            <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Informasi Tiket</h3>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div>
+                        <label for="price" class="block text-sm font-medium text-gray-700 mb-2">
+                            Harga Tiket (Rp) *
+                        </label>
+                        <input type="number" id="price" name="price" min="0" step="0.01" required
+                               value=""
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                               placeholder="0">
+                    </div>
+
+                    <div>
+                        <label for="available_tickets" class="block text-sm font-medium text-gray-700 mb-2">
+                            Jumlah Tiket *
+                        </label>
+                        <input type="number" id="available_tickets" name="available_tickets" min="1" required
+                               value=""
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                               placeholder="100">
+                    </div>
+
+                    <div>
+                        <label for="max_attendees" class="block text-sm font-medium text-gray-700 mb-2">
+                            Kapasitas Maksimal
+                        </label>
+                        <input type="number" id="max_attendees" name="max_attendees" min="1"
+                               value=""
+                               class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                               placeholder="Opsional">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Image Upload -->
+            <div>
+                <label for="image" class="block text-sm font-medium text-gray-700 mb-2">
+                    Gambar Event
+                </label>
+                <div class="flex items-center justify-center w-full">
+                    <label for="image" class="flex flex-col items-center justify-center w-full h-32 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 hover:bg-gray-100">
+                        <div class="flex flex-col items-center justify-center pt-5 pb-6">
+                            <svg class="w-8 h-8 mb-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 16">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2"/>
+                            </svg>
+                            <p class="mb-2 text-sm text-gray-500">
+                                <span class="font-semibold">Klik untuk upload</span> atau drag and drop
+                            </p>
+                            <p class="text-xs text-gray-500">PNG, JPG, JPEG (MAX. 5MB)</p>
+                        </div>
+                        <input id="image" name="image" type="file" class="hidden" accept="image/*">
+                    </label>
+                </div>
+                <div id="image-preview" class="mt-2 hidden">
+                    <img id="preview" class="h-32 rounded-lg">
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="flex justify-end space-x-4 pt-6 border-t">
+                <a href="/events" 
+                   class="px-6 py-2 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50 transition duration-300">
+                    Batal
+                </a>
+                <button type="submit" 
+                        class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition duration-300">
+                    Buat Event
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+// Image preview
+document.getElementById('image').addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    const preview = document.getElementById('preview');
+    const previewContainer = document.getElementById('image-preview');
+    
+    if (file) {
+        const reader = new FileReader();
+        reader.onload = function(e) {
+            preview.src = e.target.result;
+            previewContainer.classList.remove('hidden');
+        }
+        reader.readAsDataURL(file);
+    } else {
+        previewContainer.classList.add('hidden');
+    }
+});
+
+// Auto-set end date if empty
+document.getElementById('event_date').addEventListener('change', function() {
+    const startDate = this.value;
+    const endDateInput = document.getElementById('event_end_date');
+    
+    if (startDate && !endDateInput.value) {
+        // Set end date to 3 hours after start date by default
+        const start = new Date(startDate);
+        start.setHours(start.getHours() + 3);
+        endDateInput.value = start.toISOString().slice(0, 16);
+    }
+});
+</script>
+
+<!-- Footer -->
+    <footer class="bg-gray-800 text-white mt-16">
+        <div class="max-w-7xl mx-auto px-4 py-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div>
+                    <h3 class="text-lg font-bold mb-4">EventHub</h3>
+                    <p class="text-gray-400">Platform event terbaik untuk menemukan dan membuat acara yang tak terlupakan.</p>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="/" class="hover:text-white">Home</a></li>
+                        <li><a href="/events" class="hover:text-white">Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Support</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Help Center</a></li>
+                        <li><a href="#" class="hover:text-white">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 EventHub. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

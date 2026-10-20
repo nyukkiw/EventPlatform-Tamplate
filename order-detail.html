@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Detail - Event Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="/" class="text-2xl font-bold text-blue-600">EventKu</a>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-700">Halo, Budi Santoso</span>
+                    <a href="/orders/history" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                        <i class="fas fa-history mr-2"></i>Order History
+                    </a>
+                    <form method="POST" action="/logout" class="inline">
+                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Order Detail -->
+    <div class="max-w-4xl mx-auto px-4 py-8">
+        <div class="bg-white rounded-lg shadow-md overflow-hidden">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-blue-500 to-blue-600 p-6 text-white">
+                <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                    <div>
+                        <h1 class="text-2xl font-bold mb-2">Order #ORD-12345</h1>
+                        <p class="text-blue-100">
+                            Senin, 15 Desember 2024, 19:00
+                        </p>
+                    </div>
+                    <div class="mt-4 md:mt-0">
+                        <span class="px-4 py-2 bg-green-500 text-white rounded-full text-lg font-semibold">
+                            <i class="fas fa-check-circle mr-2"></i>LUNAS
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content -->
+            <div class="p-6">
+                <!-- Event Info -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold mb-4">Informasi Event</h2>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-bold text-gray-800 mb-2">Konser Musik Populer 2024</h3>
+                        <p class="text-gray-600 mb-4">Konser musik terbesar tahun ini dengan artis-artis ternama.</p>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Kategori</p>
+                                <p class="font-semibold">Musik</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Lokasi</p>
+                                <p class="font-semibold">Gelora Bung Karno</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Tanggal Event</p>
+                                <p class="font-semibold">
+                                    Sabtu, 15 Desember 2024, 19:00
+                                </p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Harga per Tiket</p>
+                                <p class="font-semibold">Rp 150.000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Order Summary -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold mb-4">Ringkasan Order</h2>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600">Jumlah Tiket</span>
+                            <span class="font-semibold">2 tiket</span>
+                        </div>
+                        <div class="flex justify-between items-center mb-4">
+                            <span class="text-gray-600">Subtotal</span>
+                            <span class="font-semibold">Rp 300.000</span>
+                        </div>
+                        <div class="flex justify-between items-center border-t pt-4">
+                            <span class="text-lg font-bold text-gray-800">Total</span>
+                            <span class="text-2xl font-bold text-green-600">Rp 300.000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tickets -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold mb-4">Tiket (2)</h2>
+                    <div class="space-y-4">
+                        <!-- Ticket 1 -->
+                        <div class="border rounded-lg p-4">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                <div class="mb-2 md:mb-0">
+                                    <p class="font-semibold">Tiket 1</p>
+                                    <p class="text-sm text-gray-600">Kode: TKT-ABC123-XYZ456</p>
+                                    <p class="text-sm text-gray-600">Atas nama: Budi Santoso</p>
+                                    <p class="text-sm text-gray-600">Email: budi@example.com</p>
+                                    <p class="text-sm text-gray-600">Telepon: 081234567891</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <a href="/tickets/TKT-ABC123-XYZ456" 
+                                       class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-sm">
+                                        <i class="fas fa-ticket-alt mr-1"></i>Lihat Tiket
+                                    </a>
+                                    <span class="bg-yellow-100 text-yellow-800 px-3 py-2 rounded-lg text-sm">
+                                        <i class="fas fa-clock mr-1"></i>Belum Check-in
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Ticket 2 -->
+                        <div class="border rounded-lg p-4">
+                            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                                <div class="mb-2 md:mb-0">
+                                    <p class="font-semibold">Tiket 2</p>
+                                    <p class="text-sm text-gray-600">Kode: TKT-DEF789-GHI012</p>
+                                    <p class="text-sm text-gray-600">Atas nama: Siti Rahayu</p>
+                                    <p class="text-sm text-gray-600">Email: siti@example.com</p>
+                                    <p class="text-sm text-gray-600">Telepon: 081234567892</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <a href="/tickets/TKT-DEF789-GHI012" 
+                                       class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-sm">
+                                        <i class="fas fa-ticket-alt mr-1"></i>Lihat Tiket
+                                    </a>
+                                    <span class="bg-yellow-100 text-yellow-800 px-3 py-2 rounded-lg text-sm">
+                                        <i class="fas fa-clock mr-1"></i>Belum Check-in
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Info -->
+                <div class="mb-8">
+                    <h2 class="text-xl font-semibold mb-4">Informasi Pembayaran</h2>
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <p class="text-sm text-gray-600">Invoice ID</p>
+                                <p class="font-semibold">inv_1234567890abcdef</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-600">Kadaluarsa Pembayaran</p>
+                                <p class="font-semibold">
+                                    Senin, 15 Desember 2024, 22:00
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex flex-col sm:flex-row justify-between items-center gap-4 pt-6 border-t">
+                    <a href="/orders/history" 
+                       class="bg-gray-500 text-white px-6 py-3 rounded-lg hover:bg-gray-600 font-semibold">
+                        <i class="fas fa-arrow-left mr-2"></i>Kembali ke Riwayat
+                    </a>
+                    <a href="/tickets/TKT-ABC123-XYZ456" 
+                       class="bg-green-500 text-white px-6 py-3 rounded-lg hover:bg-green-600 font-semibold">
+                        <i class="fas fa-print mr-2"></i>Print Tiket
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

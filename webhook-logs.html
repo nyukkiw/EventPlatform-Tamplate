@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Webhook Logs - EvenHub</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .status-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+        .status-paid { background-color: #28a745; }
+        .status-expired { background-color: #ffc107; }
+        .status-failed { background-color: #dc3545; }
+        .status-pending { background-color: #6c757d; }
+        
+        .log-item {
+            border-left: 4px solid #dee2e6;
+            padding-left: 15px;
+            margin-bottom: 1rem;
+        }
+        .log-item.paid { border-left-color: #28a745; }
+        .log-item.expired { border-left-color: #ffc107; }
+        .log-item.failed { border-left-color: #dc3545; }
+        
+        .event-badge {
+            font-size: 0.75rem;
+            padding: 0.25rem 0.5rem;
+        }
+        
+        .amount {
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light border-bottom">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <i class="fas fa-ticket-alt text-primary"></i>
+                <strong>EventHub</strong>
+            </a>
+            <div class="navbar-nav ms-auto">
+                <a href="/" class="btn btn-outline-secondary btn-sm">
+                    <i class="fas fa-arrow-left"></i> Back to App
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-4">
+        <!-- Header -->
+        <div class="row mb-4">
+            <div class="col-12">
+                <h2 class="mb-1">Webhook Logs</h2>
+                <p class="text-muted">Monitor Xendit payment webhook events</p>
+            </div>
+        </div>
+
+        <!-- Summary Stats -->
+        <div class="row mb-4">
+            <div class="col-md-3 mb-3">
+                <div class="card border-0 bg-light">
+                    <div class="card-body text-center">
+                        <h3 class="text-primary mb-1">5</h3>
+                        <small class="text-muted">Total Events</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card border-0 bg-light">
+                    <div class="card-body text-center">
+                        <h3 class="text-success mb-1">3</h3>
+                        <small class="text-muted">Paid</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card border-0 bg-light">
+                    <div class="card-body text-center">
+                        <h3 class="text-warning mb-1">1</h3>
+                        <small class="text-muted">Expired</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <div class="card border-0 bg-light">
+                    <div class="card-body text-center">
+                        <h3 class="text-danger mb-1">1</h3>
+                        <small class="text-muted">Failed</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Logs List -->
+        <div class="card border-0 shadow-sm">
+            <div class="card-header bg-white border-bottom">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h6 class="mb-0">Recent Events</h6>
+                    <small class="text-muted">5 events</small>
+                </div>
+            </div>
+            
+            <div class="card-body p-0">
+                <div class="list-group list-group-flush">
+                    <!-- Log 1: Paid -->
+                    <div class="list-group-item p-3 log-item paid">
+                        <div class="row align-items-center">
+                            <div class="col-md-2">
+                                <span class="status-dot status-paid"></span>
+                                <strong class="text-uppercase small">
+                                    PAID
+                                </strong>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="badge event-badge bg-secondary">
+                                    invoice.paid
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <code class="small text-truncate d-block" title="inv_1234567890abcdef">
+                                    inv_1234567890abcdef
+                                </code>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="amount text-success">
+                                    Rp 300.000
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+                                <small class="text-muted">
+                                    15 Desember 2024
+                                </small>
+                                <br>
+                                <small class="text-muted">
+                                    19:05:00
+                                </small>
+                            </div>
+                            <div class="col-md-1 text-end">
+                                <a href="/log-xendit/101" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Log 2: Paid -->
+                    <div class="list-group-item p-3 log-item paid">
+                        <div class="row align-items-center">
+                            <div class="col-md-2">
+                                <span class="status-dot status-paid"></span>
+                                <strong class="text-uppercase small">
+                                    PAID
+                                </strong>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="badge event-badge bg-secondary">
+                                    invoice.paid
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <code class="small text-truncate d-block" title="inv_abcdef1234567890">
+                                    inv_abcdef1234567890
+                                </code>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="amount text-success">
+                                    Rp 150.000
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+                                <small class="text-muted">
+                                    14 Desember 2024
+                                </small>
+                                <br>
+                                <small class="text-muted">
+                                    10:30:00
+                                </small>
+                            </div>
+                            <div class="col-md-1 text-end">
+                                <a href="/log-xendit/102" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Log 3: Paid -->
+                    <div class="list-group-item p-3 log-item paid">
+                        <div class="row align-items-center">
+                            <div class="col-md-2">
+                                <span class="status-dot status-paid"></span>
+                                <strong class="text-uppercase small">
+                                    PAID
+                                </strong>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="badge event-badge bg-secondary">
+                                    invoice.paid
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <code class="small text-truncate d-block" title="inv_7890abcdef123456">
+                                    inv_7890abcdef123456
+                                </code>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="amount text-success">
+                                    Rp 75.000
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+                                <small class="text-muted">
+                                    13 Desember 2024
+                                </small>
+                                <br>
+                                <small class="text-muted">
+                                    14:20:00
+                                </small>
+                            </div>
+                            <div class="col-md-1 text-end">
+                                <a href="/log-xendit/103" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Log 4: Expired -->
+                    <div class="list-group-item p-3 log-item expired">
+                        <div class="row align-items-center">
+                            <div class="col-md-2">
+                                <span class="status-dot status-expired"></span>
+                                <strong class="text-uppercase small">
+                                    EXPIRED
+                                </strong>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="badge event-badge bg-secondary">
+                                    invoice.expired
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <code class="small text-truncate d-block" title="inv_expired123456789">
+                                    inv_expired123456789
+                                </code>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="amount text-warning">
+                                    Rp 225.000
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+                                <small class="text-muted">
+                                    12 Desember 2024
+                                </small>
+                                <br>
+                                <small class="text-muted">
+                                    23:59:00
+                                </small>
+                            </div>
+                            <div class="col-md-1 text-end">
+                                <a href="/log-xendit/104" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Log 5: Failed -->
+                    <div class="list-group-item p-3 log-item failed">
+                        <div class="row align-items-center">
+                            <div class="col-md-2">
+                                <span class="status-dot status-failed"></span>
+                                <strong class="text-uppercase small">
+                                    FAILED
+                                </strong>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="badge event-badge bg-secondary">
+                                    invoice.payment_failed
+                                </span>
+                            </div>
+                            <div class="col-md-3">
+                                <code class="small text-truncate d-block" title="inv_failed123456789">
+                                    inv_failed123456789
+                                </code>
+                            </div>
+                            <div class="col-md-2">
+                                <span class="amount text-danger">
+                                    Rp 50.000
+                                </span>
+                            </div>
+                            <div class="col-md-2">
+                                <small class="text-muted">
+                                    11 Desember 2024
+                                </small>
+                                <br>
+                                <small class="text-muted">
+                                    16:45:00
+                                </small>
+                            </div>
+                            <div class="col-md-1 text-end">
+                                <a href="/log-xendit/105" class="btn btn-sm btn-outline-primary">
+                                    <i class="fas fa-search"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer Info -->
+        <div class="text-center mt-4">
+            <small class="text-muted">
+                Last updated: 15 Desember 2024, 20:00:00
+            </small>
+            <br>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order History - Event Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="flex justify-between items-center py-4">
+                <a href="/" class="text-2xl font-bold text-blue-600">EventKu</a>
+                <div class="flex items-center space-x-4">
+                    <span class="text-gray-700">Halo, Budi Santoso</span>
+                    <a href="/" class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                        <i class="fas fa-home mr-2"></i>Home
+                    </a>
+                    <form method="POST" action="/logout" class="inline">
+                        <button type="submit" class="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600">
+                            <i class="fas fa-sign-out-alt mr-2"></i>Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Order History -->
+    <div class="max-w-6xl mx-auto px-4 py-8">
+        <h1 class="text-3xl font-bold mb-8">Riwayat Order</h1>
+
+        <div class="space-y-6">
+            <!-- Order 1: Paid -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Konser Musik Populer 2024</h3>
+                            <p class="text-gray-600">Musik</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="px-3 py-1 bg-green-100 text-green-800 rounded-full text-sm font-semibold">
+                                <i class="fas fa-check-circle mr-1"></i>Lunas
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                            <p class="text-sm text-gray-600">Order ID</p>
+                            <p class="font-semibold">#ORD-12345</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Jumlah Tiket</p>
+                            <p class="font-semibold">2 tiket</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Total</p>
+                            <p class="font-semibold text-green-600">Rp 300.000</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <p class="text-sm text-gray-600">Tanggal Event</p>
+                            <p class="font-semibold">
+                                Sabtu, 15 Desember 2024, 19:00
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Lokasi</p>
+                            <p class="font-semibold">Gelora Bung Karno</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <p class="text-sm text-gray-600">
+                                Dipesan pada: Senin, 15 Desember 2024, 19:00
+                            </p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <a href="/orders/1" 
+                               class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-sm">
+                                <i class="fas fa-eye mr-1"></i>Detail
+                            </a>
+                            <a href="/tickets/TKT-ABC123-XYZ456" 
+                               class="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 text-sm">
+                                <i class="fas fa-ticket-alt mr-1"></i>Lihat Tiket
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order 2: Pending -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Workshop Digital Marketing</h3>
+                            <p class="text-gray-600">Bisnis</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm font-semibold">
+                                <i class="fas fa-clock mr-1"></i>Menunggu Pembayaran
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                            <p class="text-sm text-gray-600">Order ID</p>
+                            <p class="font-semibold">#ORD-67890</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Jumlah Tiket</p>
+                            <p class="font-semibold">1 tiket</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Total</p>
+                            <p class="font-semibold text-green-600">Rp 75.000</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <p class="text-sm text-gray-600">Tanggal Event</p>
+                            <p class="font-semibold">
+                                Senin, 20 Januari 2025, 09:00
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Lokasi</p>
+                            <p class="font-semibold">Hotel Grand Central</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <p class="text-sm text-gray-600">
+                                Dipesan pada: Minggu, 14 Desember 2024, 10:30
+                            </p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <a href="/orders/2" 
+                               class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-sm">
+                                <i class="fas fa-eye mr-1"></i>Detail
+                            </a>
+                            <a href="https://checkout.xendit.co/web/inv_123456" 
+                               target="_blank"
+                               class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600 text-sm">
+                                <i class="fas fa-credit-card mr-1"></i>Bayar Sekarang
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Order 3: Expired -->
+            <div class="bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="p-6">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-xl font-semibold text-gray-800">Seminar Kesehatan Mental</h3>
+                            <p class="text-gray-600">Kesehatan</p>
+                        </div>
+                        <div class="mt-2 md:mt-0">
+                            <span class="px-3 py-1 bg-red-100 text-red-800 rounded-full text-sm font-semibold">
+                                <i class="fas fa-exclamation-triangle mr-1"></i>Kadaluarsa
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                        <div>
+                            <p class="text-sm text-gray-600">Order ID</p>
+                            <p class="font-semibold">#ORD-54321</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Jumlah Tiket</p>
+                            <p class="font-semibold">3 tiket</p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Total</p>
+                            <p class="font-semibold text-green-600">Rp 225.000</p>
+                        </div>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                        <div>
+                            <p class="text-sm text-gray-600">Tanggal Event</p>
+                            <p class="font-semibold">
+                                Selasa, 10 Desember 2024, 14:00
+                            </p>
+                        </div>
+                        <div>
+                            <p class="text-sm text-gray-600">Lokasi</p>
+                            <p class="font-semibold">Gedung A Universitas Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <p class="text-sm text-gray-600">
+                                Dipesan pada: Jumat, 12 Desember 2024, 09:15
+                            </p>
+                        </div>
+                        <div class="flex space-x-2">
+                            <a href="/orders/3" 
+                               class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600 text-sm">
+                                <i class="fas fa-eye mr-1"></i>Detail
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
